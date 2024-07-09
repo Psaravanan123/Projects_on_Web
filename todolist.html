@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .todo{
+            width: 400px;
+            height: 500px;
+          border: 2px solid red;
+          margin:0 auto;
+          background-color: green;
+        }
+        .todo-head{
+            text-align: center;
+        }
+        .todo-input{
+            width:200px ;
+            height:30px ;
+            background-color: yellow;
+            margin-left: 30px;
+
+        }
+        .todo-button{
+            width:100px ;
+            height:34px ;
+            background-color: orange;
+        }
+        .todo-print{
+            font-size: 30px;
+            color:black;
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body id="blue">
+    <div class="todo">
+    <h1 class="todo-head">TODO LIST</h1>
+    <input type="text" class="todo-input">
+    <button class="todo-button">Click</button>
+    <div class="todo-print" onkeydown="va(event)"></div>
+
+</div>
+</body>
+<script>
+    var todoInput=document.querySelector(".todo-input");
+var todoButton=document.querySelector(".todo-button");
+var todoPrint=document.querySelector(".todo-print");
+let todos=[]
+window.onload=()=>{
+  todos=JSON.parse(localStorage.getItem('name1'))||[]
+ todos.forEach(todo => {
+  todoadd(todo)
+ });
+
+}
+todoInput.addEventListener('keydown',(event)=>{
+    if(event.key=='Enter'){
+  todos.push(todoInput.value)
+  localStorage.setItem('name1',JSON.stringify(todos))
+  todoadd(todoInput.value)
+  todoInput.value='';
+    }
+})
+
+todoButton.addEventListener('click',()=>{
+    todos.push(todoInput.value)
+  localStorage.setItem('name1',JSON.stringify(todos))
+  todoadd(todoInput.value)
+  todoInput.value='';
+})
+function todoadd(todo){
+    var para= document.createElement("p")
+     para.innerText=todo;
+     todoPrint.appendChild(para) 
+     para.addEventListener('click',()=>{
+      para.style.textDecoration="line-through";
+      remove(todo)
+     })
+     para.addEventListener('dblclick',()=>{
+      todoPrint.removeChild(para)
+      remove(todo)
+     })
+}
+function remove(todo){
+  let inde=todos.indexOf(todo)
+  if(inde>-1){
+    todos.splice(inde,1)
+  }
+  localStorage.setItem('name1',JSON.stringify(todos))
+}
+todoButton.addEventListener('keyup',(event)=>{
+    if(event.key=='Enter'){
+  todos.push(todoInput.value)
+  localStorage.setItem('name1',JSON.stringify(todos))
+  todoadd(todoInput.value)
+  todoInput.value='';
+    }
+})
+
+
+
+</script>
+</html>

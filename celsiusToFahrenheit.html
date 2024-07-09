@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    
+  </body>
+  <script>
+var div =document.createElement('div')
+div.className="container"
+var p=document.createElement('h1')
+p.className='head_text'
+var body=document.body
+body.style.backgroundColor='blue';
+div.className='container';
+var text=document.createTextNode('CELSIUS TO FAHRENHEIT')
+p.appendChild(text)
+div.appendChild(p)
+document.body.appendChild(div)
+var input=document.createElement('input')
+input.setAttribute('type','text')
+input.className='input_text'
+div.appendChild(input)
+var button=document.createElement('button')
+button.className="input_btn"
+var text1=document.createTextNode("CONVERT")
+button.appendChild(text1)
+div.appendChild(button)
+var p2=document.createElement('p')
+p2.className="input_display"
+div.appendChild(p2)
+var p4=document.createElement('button')
+p4.className='displayAns'
+
+var c=document.querySelector(".container")
+c.style.backgroundColor='red'
+c.style.width='500px'
+c.style.height='500px'
+c.style.textAlign='center'
+c.style.marginLeft='390px'
+
+var inputText=document.querySelector(".input_text")
+inputText.style.width='300px'
+inputText.style.height='40px'
+inputText.style.margin="50px"
+inputText.style.fontSize='30px'
+inputText.style.backgroundColor='yellow'
+
+var btn=document.querySelector(".input_btn")
+btn.style.display='block'
+btn.style.marginLeft='200px'
+btn.style.width='100px'
+btn.style.height='40px'
+btn.style.backgroundColor='green'
+
+var headText=document.querySelector(".head_text")
+headText.style.padding="30px"
+
+var textDisplay=document.querySelector(".input_display")
+textDisplay.style.fontSize='30px'
+
+btn.addEventListener('click',()=>{
+  try{
+    if(!isNaN(parseInt(inputText.value))){
+    let cal=(parseInt(inputText.value)*9/5)+32;
+    textDisplay.innerHTML=cal
+    inputText.value="";
+    }
+    else{
+      inputText.value="";
+      throw("Enter a number")
+    }
+  }
+  catch(e){
+    textDisplay.innerHTML=e;
+
+  }
+})
+inputText.addEventListener('keydown',(event)=>{
+  if(event.keyCode==13){
+  try{
+    if(!isNaN(parseInt(inputText.value))){
+    let cal=(parseInt(inputText.value)*9/5)+32;
+    textDisplay.innerHTML=cal
+    inputText.value="";
+    }
+    else{
+      inputText.value="";
+      throw("Enter a number")
+    }
+  }
+  catch(e){
+    textDisplay.innerHTML=e;
+  }
+}
+})
+</script>
+</html>

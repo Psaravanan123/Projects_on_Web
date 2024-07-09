@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    body {
+      background-color: #f78d41;
+
+    }
+
+    .word_calculator {
+      text-align: center;
+      margin: 0 auto;
+      border-radius: 3px;
+      margin-top: 100px;
+      background-color: rgba(0, 0, 0, 1);
+      color: #f78d41;
+      width: 400px;
+    }
+
+    .calculator-heading {
+      color: #f78d41;
+    }
+
+    .calculator-input {
+      background-color: rgb(198, 231, 239);
+      font-weight: bold;
+
+    }
+
+    .calculator-button {
+      background-color: #f78d41;
+      font-weight: bold;
+      padding: 5px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="word_calculator">
+    <h1 class="calculator-heading">Type a sentence</h1>
+    <textarea class="calculator-input" id="input" rows="20" cols="35"></textarea><br>
+    <button class="calculator-button" onclick="ans()">Calculate Letter</button>
+    <div id="calculator-answer"></div>
+  </div>
+
+  <script>
+    var input = document.getElementById('input');
+    var display = document.getElementById('calculator-answer')
+    function ans() {
+      try {
+        var ref = input.value;
+        if (ref == '') {
+          throw 'enter a value'
+        }
+        display.innerHTML = ref.length;
+      }
+      catch (e) {
+        alert(e);
+      }
+    }
+  </script>
+</body>
+
+</html>
